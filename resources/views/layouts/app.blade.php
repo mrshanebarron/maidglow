@@ -45,12 +45,8 @@
 
                         <!-- Sidebar component for mobile -->
                         <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-[#333d34] px-6 pb-4">
-                            <div class="flex h-16 shrink-0 items-center gap-2">
-                                <svg class="w-7 h-7 text-[#c9a962]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M12 3l1.5 3.5L17 8l-3.5 1.5L12 13l-1.5-3.5L7 8l3.5-1.5L12 3z"/>
-                                    <path d="M5 16l1 2.5L8.5 20l-2.5 1L5 24l-1-2.5L1.5 20l2.5-1L5 16z" opacity="0.5"/>
-                                </svg>
-                                <span class="text-2xl font-serif text-white">MaidGlow</span>
+                            <div class="flex h-16 shrink-0 items-center">
+                                <span class="text-2xl font-serif text-white">Maid<span class="text-[#c9a962]">Glow</span></span>
                             </div>
                             @include('layouts.partials.sidebar-nav')
                         </div>
@@ -61,12 +57,8 @@
             <!-- Static sidebar for desktop -->
             <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
                 <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-[#333d34] px-6 pb-4">
-                    <div class="flex h-16 shrink-0 items-center gap-2">
-                        <svg class="w-7 h-7 text-[#c9a962]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M12 3l1.5 3.5L17 8l-3.5 1.5L12 13l-1.5-3.5L7 8l3.5-1.5L12 3z"/>
-                            <path d="M5 16l1 2.5L8.5 20l-2.5 1L5 24l-1-2.5L1.5 20l2.5-1L5 16z" opacity="0.5"/>
-                        </svg>
-                        <span class="text-2xl font-serif text-white">MaidGlow</span>
+                    <div class="flex h-16 shrink-0 items-center">
+                        <span class="text-2xl font-serif text-white">Maid<span class="text-[#c9a962]">Glow</span></span>
                     </div>
                     @include('layouts.partials.sidebar-nav')
                 </div>
