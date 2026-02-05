@@ -30,7 +30,7 @@
         <div class="lg:col-span-2">
             <div class="overflow-hidden rounded-lg bg-white shadow">
                 <div class="border-b border-gray-200 bg-white px-4 py-5 sm:px-6">
-                    <div class="flex items-center justify-between">
+                    <div class="flex items-center justify-between gap-4">
                         <h3 class="text-base font-semibold leading-6 text-gray-900">Today's Schedule</h3>
                         <a href="{{ route('admin.jobs.create') }}" class="rounded-md bg-[#4a5b4b] px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-[#5f7360]">
                             Schedule Job

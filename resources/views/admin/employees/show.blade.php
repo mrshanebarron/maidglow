@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex justify-between items-center">
+        <div class="flex justify-between items-center gap-4">
             <div class="flex items-center">
                 <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold mr-3" style="background-color: {{ $employee->color ?? '#6B7280' }}">
                     {{ substr($employee->name, 0, 1) }}

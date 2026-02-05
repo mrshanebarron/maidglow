@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex items-center justify-between">
+        <div class="flex items-center justify-between gap-4">
             <h1 class="text-2xl font-semibold text-gray-900">Jobs</h1>
             <a href="{{ route('admin.jobs.create') }}" class="rounded-md bg-[#4a5b4b] px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-[#5f7360]">
                 Schedule Job
