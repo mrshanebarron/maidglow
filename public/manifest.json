@@ -1,11 +1,11 @@
 {
-    "name": "MaidGlow Tech",
+    "name": "MaidGlow",
     "short_name": "MaidGlow",
-    "description": "MaidGlow Cleaning - Technician App",
-    "start_url": "/tech",
+    "description": "MaidGlow - Professional Cleaning Service",
+    "start_url": "/",
     "display": "standalone",
-    "background_color": "#7c3aed",
-    "theme_color": "#7c3aed",
+    "background_color": "#333d34",
+    "theme_color": "#4a5b4b",
     "icons": [
         {
             "src": "/icon-192.png",
