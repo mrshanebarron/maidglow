@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
+        <title>{{ config('app.name', 'MaidGlow') }}</title>
+
+        <!-- PWA -->
+        <link rel="manifest" href="/manifest.json">
+        <meta name="theme-color" content="#4a5b4b">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+        <!-- Scripts -->
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        <style>
+            body { font-family: 'Inter', sans-serif; }
+            .font-serif { font-family: 'Instrument Serif', Georgia, serif; }
+        </style>
+    </head>
+    <body class="h-full bg-[#FDFBF7]">
+        <div x-data="{ sidebarOpen: false }" class="min-h-full">
+            <!-- Off-canvas menu for mobile -->
+            <div x-show="sidebarOpen" class="relative z-50 lg:hidden" x-cloak>
+                <div x-show="sidebarOpen" x-transition:enter="transition-opacity ease-linear duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition-opacity ease-linear duration-300" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="fixed inset-0 bg-gray-900/80"></div>
+
+                <div class="fixed inset-0 flex">
+                    <div x-show="sidebarOpen" x-transition:enter="transition ease-in-out duration-300 transform" x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-in-out duration-300 transform" x-transition:leave-start="translate-x-0" x-transition:leave-end="-translate-x-full" class="relative mr-16 flex w-full max-w-xs flex-1">
+                        <div class="absolute left-full top-0 flex w-16 justify-center pt-5">
+                            <button type="button" @click="sidebarOpen = false" class="-m-2.5 p-2.5">
+                                <span class="sr-only">Close sidebar</span>
+                                <svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+
+                        <!-- Sidebar component for mobile -->
+                        <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-[#333d34] px-6 pb-4">
+                            <div class="flex h-16 shrink-0 items-center gap-2">
+                                <svg class="w-7 h-7 text-[#c9a962]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M12 3l1.5 3.5L17 8l-3.5 1.5L12 13l-1.5-3.5L7 8l3.5-1.5L12 3z"/>
+                                    <path d="M5 16l1 2.5L8.5 20l-2.5 1L5 24l-1-2.5L1.5 20l2.5-1L5 16z" opacity="0.5"/>
+                                </svg>
+                                <span class="text-2xl font-serif text-white">MaidGlow</span>
+                            </div>
+                            @include('layouts.partials.sidebar-nav')
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Static sidebar for desktop -->
+            <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
+                <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-[#333d34] px-6 pb-4">
+                    <div class="flex h-16 shrink-0 items-center gap-2">
+                        <svg class="w-7 h-7 text-[#c9a962]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 3l1.5 3.5L17 8l-3.5 1.5L12 13l-1.5-3.5L7 8l3.5-1.5L12 3z"/>
+                            <path d="M5 16l1 2.5L8.5 20l-2.5 1L5 24l-1-2.5L1.5 20l2.5-1L5 16z" opacity="0.5"/>
+                        </svg>
+                        <span class="text-2xl font-serif text-white">MaidGlow</span>
+                    </div>
+                    @include('layouts.partials.sidebar-nav')
+                </div>
+            </div>
+
+            <div class="lg:pl-72">
+                <!-- Top bar -->
+                <div class="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
+                    <button type="button" @click="sidebarOpen = true" class="-m-2.5 p-2.5 text-gray-700 lg:hidden">
+                        <span class="sr-only">Open sidebar</span>
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                    </button>
+
+                    <!-- Separator -->
+                    <div class="h-6 w-px bg-gray-200 lg:hidden"></div>
+
+                    <div class="flex flex-1 gap-x-4 self-stretch lg:gap-x-6">
+                        <div class="flex flex-1 items-center">
+                            @isset($header)
+                                {{ $header }}
+                            @endisset
+                        </div>
+                        <div class="flex items-center gap-x-4 lg:gap-x-6">
+                            <!-- Profile dropdown -->
+                            <div x-data="{ open: false }" class="relative">
+                                <button @click="open = !open" type="button" class="-m-1.5 flex items-center p-1.5">
+                                    <span class="sr-only">Open user menu</span>
+                                    <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-[#4a5b4b]">
+                                        <span class="text-sm font-medium leading-none text-white">{{ substr(Auth::user()->name, 0, 1) }}</span>
+                                    </span>
+                                    <span class="hidden lg:flex lg:items-center">
+                                        <span class="ml-4 text-sm font-semibold leading-6 text-[#1a1a1a]">{{ Auth::user()->name }}</span>
+                                        <svg class="ml-2 h-5 w-5 text-[#7d8f7d]" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                                        </svg>
+                                    </span>
+                                </button>
+
+                                <div x-show="open" @click.away="open = false" x-transition class="absolute right-0 z-10 mt-2.5 w-32 origin-top-right rounded-xl bg-white py-2 shadow-lg ring-1 ring-[#c7d0c7]">
+                                    <a href="{{ route('profile.edit') }}" class="block px-3 py-1.5 text-sm leading-6 text-[#1a1a1a] hover:bg-[#f6f7f6]">Profile</a>
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <button type="submit" class="block w-full text-left px-3 py-1.5 text-sm leading-6 text-[#1a1a1a] hover:bg-[#f6f7f6]">Sign out</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <main class="py-10">
+                    <div class="px-4 sm:px-6 lg:px-8">
+                        {{ $slot }}
+                    </div>
+                </main>
+            </div>
+        </div>
+    </body>
+</html>
